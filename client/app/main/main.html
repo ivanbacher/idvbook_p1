@@ -3,7 +3,19 @@
 </header>
 
 <div class="container">
-  <canvas threejs-directive></canvas>
+  <nvd3-scatter-chart 
+    data="dataset"
+    id="scatterChart"
+    width="500"
+    height="300"
+    noData="Data aint here"
+    interactive="true"
+    tooltips="true"
+    showDistX="true"
+    showDistY="true"
+                      transitionDuration="1000">
+      <svg></svg>
+    </nvd3-scatter-chart>
 </div>
 
 <footer class="footer">

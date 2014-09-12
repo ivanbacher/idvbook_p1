@@ -17,6 +17,7 @@ angular.module('p1App')
       
 
       camera = new THREE.PerspectiveCamera( 45, width/height, 1, 1000);
+      camera.position.z = 100;
       
       scene = new THREE.Scene();
       
@@ -55,6 +56,38 @@ angular.module('p1App')
     this.onResize = function() {
       //todo
     }
+    
+    this.drawGraph = function(data) {
+      
+    };
+    
+    function createLine(length) {
+      
+      var material = new THREE.LineBasicMaterial({
+        color: 0x0000ff,
+        linewidth: 5
+      });
+      
+      var geometry = new THREE.Geometry();
+      geometry.vertices.push(new THREE.Vector3(length,0,0));
+      geometry.vertices.push(new THREE.Vector3(-length,0,0));
+      
+      var line = new THREE.Line(geometry, material);
+      
+      return line;
+    };
   
+    function calcVisHeight( dist ) {
+      var vFOV = camera.fov * Math.PI / 180;
+      var height = 2 * Math.tan(vFOV/2) * dist;
+      return height;
+    };
+  
+    function calcVisWidth(dist) {
+      var height = calcVisHeight(dist);
+      var aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+      var width = height * aspect;
+      return width;
+    }; 
   
   });

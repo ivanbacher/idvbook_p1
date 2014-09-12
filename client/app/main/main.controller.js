@@ -1,11 +1,10 @@
 'use strict';
 
 angular.module('p1App')
-  .controller('MainCtrl', function ($scope, $http) {
-    $scope.data = [];
+  .controller('MainCtrl', function ($scope, $http, threejsService, datasetService) {
 
-    $http.get('/api/data').success(function(data) {
-      $scope.data = data;
+    datasetService.getData().then(function(){
+      console.log("adasasd");
     });
 
   });
